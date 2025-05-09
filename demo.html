@@ -6,7 +6,7 @@
     <title>LuaPop Demo</title>
     <link
       rel="stylesheet"
-      href="https://lua-ai-global.github.io/lua-pop/lua-pop.css"
+      href="https://lua-ai-global.github.io/lua-popup-demo/style.css"
     />
     <style>
       * {
@@ -21,42 +21,42 @@
         max-width: 1200px;
         margin: 0 auto;
       }
-      header {
+      .luapop-demo-header {
         text-align: center;
         margin-bottom: 2rem;
       }
-      h1 {
+      .luapop-demo-heading {
         margin-bottom: 1rem;
         color: #333;
       }
-      p {
+      .luapop-demo-paragraph {
         color: #666;
         line-height: 1.5;
       }
-      .configuration {
+      .luapop-demo-configuration {
         background: #f8f9fa;
         border-radius: 8px;
         padding: 1.5rem;
         margin-bottom: 2rem;
       }
-      .form-group {
+      .luapop-demo-form-group {
         margin-bottom: 1rem;
       }
-      label {
+      .luapop-demo-label {
         display: block;
         margin-bottom: 0.5rem;
         font-weight: 500;
       }
-      input,
-      select,
-      textarea {
+      .luapop-demo-input,
+      .luapop-demo-select,
+      .luapop-demo-textarea {
         width: 100%;
         padding: 0.5rem;
         border: 1px solid #ddd;
         border-radius: 4px;
         font-size: 16px;
       }
-      button {
+      .luapop-demo-button {
         background: #4361ee;
         color: white;
         border: none;
@@ -66,10 +66,10 @@
         font-weight: 500;
         transition: background-color 0.2s;
       }
-      button:hover {
+      .luapop-demo-button:hover {
         background: #3a56d4;
       }
-      .code-block {
+      .luapop-demo-code-block {
         background: #272822;
         color: #f8f8f2;
         padding: 1.5rem;
@@ -77,37 +77,38 @@
         overflow-x: auto;
         margin-bottom: 2rem;
       }
-      code {
+      .luapop-demo-code {
         font-family: "Courier New", Courier, monospace;
       }
-      .comment {
+      .luapop-demo-comment {
         color: #75715e;
       }
-      .string {
+      .luapop-demo-string {
         color: #e6db74;
       }
-      .keyword {
+      .luapop-demo-keyword {
         color: #f92672;
       }
-      .property {
+      .luapop-demo-property {
         color: #a6e22e;
       }
     </style>
   </head>
   <body>
-    <header>
-      <h1>LuaPop Demo</h1>
-      <p>
+    <header class="luapop-demo-header">
+      <h1 class="luapop-demo-heading">LuaPop Demo</h1>
+      <p class="luapop-demo-paragraph">
         Customize the chat widget configuration below and see it update in
         real-time.
       </p>
     </header>
 
-    <div class="configuration">
-      <h2>Widget Configuration</h2>
-      <div class="form-group">
-        <label for="authToken">Auth Token</label>
+    <div class="luapop-demo-configuration">
+      <h2 class="luapop-demo-heading">Widget Configuration</h2>
+      <div class="luapop-demo-form-group">
+        <label class="luapop-demo-label" for="authToken">Auth Token</label>
         <input
+          class="luapop-demo-input"
           type="password"
           id="authToken"
           value=""
@@ -115,9 +116,20 @@
         />
       </div>
 
-      <div class="form-group">
-        <label for="position">Position</label>
-        <select id="position">
+      <div class="luapop-demo-form-group">
+        <label class="luapop-demo-label" for="agentId">Agent ID</label>
+        <input
+          class="luapop-demo-input"
+          type="text"
+          id="agentId"
+          value="chowpadi"
+          placeholder="Agent ID (e.g. chowpadi)"
+        />
+      </div>
+
+      <div class="luapop-demo-form-group">
+        <label class="luapop-demo-label" for="position">Position</label>
+        <select class="luapop-demo-select" id="position">
           <option value="bottom-right">Bottom Right</option>
           <option value="bottom-left">Bottom Left</option>
           <option value="top-right">Top Right</option>
@@ -125,17 +137,18 @@
         </select>
       </div>
 
-      <div class="form-group">
-        <label for="theme">Theme</label>
-        <select id="theme">
+      <div class="luapop-demo-form-group">
+        <label class="luapop-demo-label" for="theme">Theme</label>
+        <select class="luapop-demo-select" id="theme">
           <option value="light">Light</option>
           <option value="dark">Dark</option>
         </select>
       </div>
 
-      <div class="form-group">
-        <label for="buttonText">Button Text</label>
+      <div class="luapop-demo-form-group">
+        <label class="luapop-demo-label" for="buttonText">Button Text</label>
         <input
+          class="luapop-demo-input"
           type="text"
           id="buttonText"
           value="Chat with us"
@@ -143,29 +156,30 @@
         />
       </div>
 
-      <button id="updateButton">Update Widget</button>
+      <button class="luapop-demo-button" id="updateButton">Update Widget</button>
     </div>
 
-    <div class="code-block">
-      <pre><code id="code-snippet"><span class="comment">// Add this to your website</span>
-&lt;<span class="keyword">link</span> <span class="property">rel</span>=<span class="string">"stylesheet"</span> <span class="property">href</span>=<span class="string">"hhttps://lua-ai-global.github.io/lua-pop/lua-pop.css"</span>&gt;
-&lt;<span class="keyword">script</span> <span class="property">src</span>=<span class="string">"https://lua-ai-global.github.io/lua-pop/lua-pop.umd.js"</span>&gt;&lt;/<span class="keyword">script</span>&gt;
-&lt;<span class="keyword">script</span>&gt;
-  <span class="comment">// Initialize the widget with your configuration</span>
-  <span class="property">window</span>.<span class="property">LuaPop</span>.<span class="property">init</span>({
-    <span class="property">authToken</span>: <span class="string">"YOUR_API_TOKEN"</span>,
-    <span class="property">position</span>: <span class="string">"bottom-right"</span>, <span class="comment">// bottom-right, bottom-left, top-right, top-left</span>
-    <span class="property">theme</span>: <span class="string">"light"</span>, <span class="comment">// light or dark</span>
-    <span class="property">buttonText</span>: <span class="string">"Chat with us"</span>,
+    <div class="luapop-demo-code-block">
+      <pre><code class="luapop-demo-code" id="code-snippet"><span class="luapop-demo-comment">// Add this to your website</span>
+&lt;<span class="luapop-demo-keyword">link</span> <span class="luapop-demo-property">rel</span>=<span class="luapop-demo-string">"stylesheet"</span> <span class="luapop-demo-property">href</span>=<span class="luapop-demo-string">"https://lua-ai-global.github.io/lua-popup-demo/style.css"</span>&gt;
+&lt;<span class="luapop-demo-keyword">script</span> <span class="luapop-demo-property">src</span>=<span class="luapop-demo-string">"https://lua-ai-global.github.io/lua-popup-demo/lua-pop.umd.js"</span>&gt;&lt;/<span class="luapop-demo-keyword">script</span>&gt;
+&lt;<span class="luapop-demo-keyword">script</span>&gt;
+  <span class="luapop-demo-comment">// Initialize the widget with your configuration</span>
+  <span class="luapop-demo-property">window</span>.<span class="luapop-demo-property">LuaPop</span>.<span class="luapop-demo-property">init</span>({
+    <span class="luapop-demo-property">authToken</span>: <span class="luapop-demo-string">"YOUR_API_TOKEN"</span>,
+    <span class="luapop-demo-property">agentId</span>: <span class="luapop-demo-string">"chowpadi"</span>,
+    <span class="luapop-demo-property">position</span>: <span class="luapop-demo-string">"bottom-right"</span>, <span class="luapop-demo-comment">// bottom-right, bottom-left, top-right, top-left</span>
+    <span class="luapop-demo-property">theme</span>: <span class="luapop-demo-string">"light"</span>, <span class="luapop-demo-comment">// light or dark</span>
+    <span class="luapop-demo-property">buttonText</span>: <span class="luapop-demo-string">"Chat with us"</span>,
   });
-&lt;/<span class="keyword">script</span>&gt;</code></pre>
+&lt;/<span class="luapop-demo-keyword">script</span>&gt;</code></pre>
     </div>
 
     <script>
       // For the demo, we'll load the script from the GitHub repository
       const script = document.createElement("script");
       script.src =
-        "https://lua-ai-global.github.io/lua-pop/lua-pop.umd.js";
+        "https://lua-ai-global.github.io/lua-popup-demo/lua-pop.umd.js";
       document.head.appendChild(script);
 
       // Wait for the script to load
@@ -175,7 +189,7 @@
         updateCodeBlock();
 
         // Update values when inputs change
-        const inputs = ["authToken", "position", "theme", "buttonText"];
+        const inputs = ["authToken", "agentId", "position", "theme", "buttonText"];
         inputs.forEach((id) => {
           document
             .getElementById(id)
@@ -199,6 +213,7 @@
       function initWidget() {
         window.LuaPop.init({
           authToken: document.getElementById("authToken").value,
+          agentId: document.getElementById("agentId").value,
           position: document.getElementById("position").value,
           theme: document.getElementById("theme").value,
           buttonText: document.getElementById("buttonText").value,
@@ -208,23 +223,25 @@
       // Function to update the code block with current form values
       function updateCodeBlock() {
         const authToken = document.getElementById("authToken").value;
+        const agentId = document.getElementById("agentId").value;
         const position = document.getElementById("position").value;
         const theme = document.getElementById("theme").value;
         const buttonText = document.getElementById("buttonText").value;
 
         // Create updated code snippet
-        const codeSnippet = `<span class="comment">// Add this to your website</span>
-      &lt;<span class="keyword">link</span> <span class="property">rel</span>=<span class="string">"stylesheet"</span> <span class="property">href</span>=<span class="string">"https://lua-ai-global.github.io/lua-pop/lua-pop.css"</span>&gt;
-      &lt;<span class="keyword">script</span> <span class="property">src</span>=<span class="string">"https://lua-ai-global.github.io/lua-pop/lua-pop.umd.js"</span>&gt;&lt;/<span class="keyword">script</span>&gt;
-      &lt;<span class="keyword">script</span>&gt;
-        <span class="comment">// Initialize the widget with your configuration</span>
-        <span class="property">window</span>.<span class="property">LuaPop</span>.<span class="property">init</span>({
-          <span class="property">authToken</span>: <span class="string">"${authToken}"</span>,
-          <span class="property">position</span>: <span class="string">"${position}"</span>, <span class="comment">// bottom-right, bottom-left, top-right, top-left</span>
-          <span class="property">theme</span>: <span class="string">"${theme}"</span>, <span class="comment">// light or dark</span>
-          <span class="property">buttonText</span>: <span class="string">"${buttonText}"</span>,
+        const codeSnippet = `<span class="luapop-demo-comment">// Add this to your website</span>
+      &lt;<span class="luapop-demo-keyword">link</span> <span class="luapop-demo-property">rel</span>=<span class="luapop-demo-string">"stylesheet"</span> <span class="luapop-demo-property">href</span>=<span class="luapop-demo-string">"https://lua-ai-global.github.io/lua-popup-demo/style.css"</span>&gt;
+      &lt;<span class="luapop-demo-keyword">script</span> <span class="luapop-demo-property">src</span>=<span class="luapop-demo-string">"https://lua-ai-global.github.io/lua-popup-demo/lua-pop.umd.js"</span>&gt;&lt;/<span class="luapop-demo-keyword">script</span>&gt;
+      &lt;<span class="luapop-demo-keyword">script</span>&gt;
+        <span class="luapop-demo-comment">// Initialize the widget with your configuration</span>
+        <span class="luapop-demo-property">window</span>.<span class="luapop-demo-property">LuaPop</span>.<span class="luapop-demo-property">init</span>({
+          <span class="luapop-demo-property">authToken</span>: <span class="luapop-demo-string">"${authToken}"</span>,
+          <span class="luapop-demo-property">agentId</span>: <span class="luapop-demo-string">"${agentId}"</span>, <span class="luapop-demo-comment">// Optional: Specify which agent to use</span>
+          <span class="luapop-demo-property">position</span>: <span class="luapop-demo-string">"${position}"</span>, <span class="luapop-demo-comment">// bottom-right, bottom-left, top-right, top-left</span>
+          <span class="luapop-demo-property">theme</span>: <span class="luapop-demo-string">"${theme}"</span>, <span class="luapop-demo-comment">// light or dark</span>
+          <span class="luapop-demo-property">buttonText</span>: <span class="luapop-demo-string">"${buttonText}"</span>,
         });
-      &lt;/<span class="keyword">script</span>&gt;`;
+      &lt;/<span class="luapop-demo-keyword">script</span>&gt;`;
 
         // Update the code snippet in the DOM
         document.getElementById("code-snippet").innerHTML = codeSnippet;

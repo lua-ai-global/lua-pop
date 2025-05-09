@@ -10,8 +10,7 @@
     authToken: "",
     position: "bottom-right",
     theme: "light",
-    buttonText: "Chat with us",
-    greeting: "Hi there! How can we help you today?"
+    buttonText: "Chat with us"
   };
   
   // Initialize the support widget
