@@ -184,7 +184,7 @@ var __privateWrapper = (obj, member, setter, getter) => ({
       throw a._result;
     }
     var U = { current: null }, V = { transition: null }, W = { ReactCurrentDispatcher: U, ReactCurrentBatchConfig: V, ReactCurrentOwner: K };
-    function X2() {
+    function X() {
       throw Error("act(...) is not supported in production builds of React.");
     }
     react_production_min.Children = { map: S, forEach: function(a, b, e) {
@@ -212,7 +212,7 @@ var __privateWrapper = (obj, member, setter, getter) => ({
     react_production_min.StrictMode = q;
     react_production_min.Suspense = w;
     react_production_min.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = W;
-    react_production_min.act = X2;
+    react_production_min.act = X;
     react_production_min.cloneElement = function(a, b, e) {
       if (null === a || void 0 === a) throw Error("React.cloneElement(...): The argument must be a React element, but you passed " + a + ".");
       var d = C({}, a.props), c = a.key, k = a.ref, h = a._owner;
@@ -264,7 +264,7 @@ var __privateWrapper = (obj, member, setter, getter) => ({
         V.transition = b;
       }
     };
-    react_production_min.unstable_act = X2;
+    react_production_min.unstable_act = X;
     react_production_min.useCallback = function(a, b) {
       return U.current.useCallback(a, b);
     };
@@ -5089,7 +5089,7 @@ var __privateWrapper = (obj, member, setter, getter) => ({
       if (5 === d || 6 === d) a = a.stateNode, b ? c.insertBefore(a, b) : c.appendChild(a);
       else if (4 !== d && (a = a.child, null !== a)) for (Wj(a, b, c), a = a.sibling; null !== a; ) Wj(a, b, c), a = a.sibling;
     }
-    var X2 = null, Xj = false;
+    var X = null, Xj = false;
     function Yj(a, b, c) {
       for (c = c.child; null !== c; ) Zj(a, b, c), c = c.sibling;
     }
@@ -5102,23 +5102,23 @@ var __privateWrapper = (obj, member, setter, getter) => ({
         case 5:
           U || Lj(c, b);
         case 6:
-          var d = X2, e = Xj;
-          X2 = null;
+          var d = X, e = Xj;
+          X = null;
           Yj(a, b, c);
-          X2 = d;
+          X = d;
           Xj = e;
-          null !== X2 && (Xj ? (a = X2, c = c.stateNode, 8 === a.nodeType ? a.parentNode.removeChild(c) : a.removeChild(c)) : X2.removeChild(c.stateNode));
+          null !== X && (Xj ? (a = X, c = c.stateNode, 8 === a.nodeType ? a.parentNode.removeChild(c) : a.removeChild(c)) : X.removeChild(c.stateNode));
           break;
         case 18:
-          null !== X2 && (Xj ? (a = X2, c = c.stateNode, 8 === a.nodeType ? Kf(a.parentNode, c) : 1 === a.nodeType && Kf(a, c), bd(a)) : Kf(X2, c.stateNode));
+          null !== X && (Xj ? (a = X, c = c.stateNode, 8 === a.nodeType ? Kf(a.parentNode, c) : 1 === a.nodeType && Kf(a, c), bd(a)) : Kf(X, c.stateNode));
           break;
         case 4:
-          d = X2;
+          d = X;
           e = Xj;
-          X2 = c.stateNode.containerInfo;
+          X = c.stateNode.containerInfo;
           Xj = true;
           Yj(a, b, c);
-          X2 = d;
+          X = d;
           Xj = e;
           break;
         case 0:
@@ -5175,23 +5175,23 @@ var __privateWrapper = (obj, member, setter, getter) => ({
           a: for (; null !== h; ) {
             switch (h.tag) {
               case 5:
-                X2 = h.stateNode;
+                X = h.stateNode;
                 Xj = false;
                 break a;
               case 3:
-                X2 = h.stateNode.containerInfo;
+                X = h.stateNode.containerInfo;
                 Xj = true;
                 break a;
               case 4:
-                X2 = h.stateNode.containerInfo;
+                X = h.stateNode.containerInfo;
                 Xj = true;
                 break a;
             }
             h = h.return;
           }
-          if (null === X2) throw Error(p(160));
+          if (null === X) throw Error(p(160));
           Zj(f, g, e);
-          X2 = null;
+          X = null;
           Xj = false;
           var k = e.alternate;
           null !== k && (k.return = null);
@@ -12035,126 +12035,6 @@ var __privateWrapper = (obj, member, setter, getter) => ({
       }
     );
   }
-  /**
-   * @license lucide-react v0.479.0 - ISC
-   *
-   * This source code is licensed under the ISC license.
-   * See the LICENSE file in the root directory of this source tree.
-   */
-  const toKebabCase = (string2) => string2.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
-  const mergeClasses = (...classes) => classes.filter((className, index2, array) => {
-    return Boolean(className) && className.trim() !== "" && array.indexOf(className) === index2;
-  }).join(" ").trim();
-  /**
-   * @license lucide-react v0.479.0 - ISC
-   *
-   * This source code is licensed under the ISC license.
-   * See the LICENSE file in the root directory of this source tree.
-   */
-  var defaultAttributes = {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: 2,
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  };
-  /**
-   * @license lucide-react v0.479.0 - ISC
-   *
-   * This source code is licensed under the ISC license.
-   * See the LICENSE file in the root directory of this source tree.
-   */
-  const Icon = reactExports.forwardRef(
-    ({
-      color: color2 = "currentColor",
-      size = 24,
-      strokeWidth = 2,
-      absoluteStrokeWidth,
-      className = "",
-      children,
-      iconNode,
-      ...rest
-    }, ref) => {
-      return reactExports.createElement(
-        "svg",
-        {
-          ref,
-          ...defaultAttributes,
-          width: size,
-          height: size,
-          stroke: color2,
-          strokeWidth: absoluteStrokeWidth ? Number(strokeWidth) * 24 / Number(size) : strokeWidth,
-          className: mergeClasses("lucide", className),
-          ...rest
-        },
-        [
-          ...iconNode.map(([tag, attrs]) => reactExports.createElement(tag, attrs)),
-          ...Array.isArray(children) ? children : [children]
-        ]
-      );
-    }
-  );
-  /**
-   * @license lucide-react v0.479.0 - ISC
-   *
-   * This source code is licensed under the ISC license.
-   * See the LICENSE file in the root directory of this source tree.
-   */
-  const createLucideIcon = (iconName, iconNode) => {
-    const Component = reactExports.forwardRef(
-      ({ className, ...props }, ref) => reactExports.createElement(Icon, {
-        ref,
-        iconNode,
-        className: mergeClasses(`lucide-${toKebabCase(iconName)}`, className),
-        ...props
-      })
-    );
-    Component.displayName = `${iconName}`;
-    return Component;
-  };
-  /**
-   * @license lucide-react v0.479.0 - ISC
-   *
-   * This source code is licensed under the ISC license.
-   * See the LICENSE file in the root directory of this source tree.
-   */
-  const __iconNode$2 = [
-    ["rect", { width: "20", height: "14", x: "2", y: "5", rx: "2", key: "ynyp8z" }],
-    ["line", { x1: "2", x2: "22", y1: "10", y2: "10", key: "1b3vmo" }]
-  ];
-  const CreditCard = createLucideIcon("CreditCard", __iconNode$2);
-  /**
-   * @license lucide-react v0.479.0 - ISC
-   *
-   * This source code is licensed under the ISC license.
-   * See the LICENSE file in the root directory of this source tree.
-   */
-  const __iconNode$1 = [
-    [
-      "path",
-      {
-        d: "M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z",
-        key: "1ffxy3"
-      }
-    ],
-    ["path", { d: "m21.854 2.147-10.94 10.939", key: "12cjpa" }]
-  ];
-  const Send = createLucideIcon("Send", __iconNode$1);
-  /**
-   * @license lucide-react v0.479.0 - ISC
-   *
-   * This source code is licensed under the ISC license.
-   * See the LICENSE file in the root directory of this source tree.
-   */
-  const __iconNode = [
-    ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
-    ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
-  ];
-  const X = createLucideIcon("X", __iconNode);
   function generateUuid() {
     return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
       const r2 = Math.random() * 16 | 0;
@@ -12206,7 +12086,7 @@ var __privateWrapper = (obj, member, setter, getter) => ({
           className: `p-3 rounded-full flex-shrink-0 ${message.trim() && !isLoading ? "bg-primary text-primary-foreground hover:opacity-90" : "bg-muted text-muted-foreground cursor-not-allowed"}`,
           disabled: !message.trim() || isLoading,
           "aria-label": "Send message",
-          children: /* @__PURE__ */ jsxRuntimeExports.jsx(Send, { size: 20 })
+          children: /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowUp, {})
         }
       )
     ] });
@@ -27586,6 +27466,98 @@ var __privateWrapper = (obj, member, setter, getter) => ({
       message.isUploading && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-black bg-opacity-50 rounded-lg flex items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-white text-sm", children: "Uploading..." }) })
     ] }) }) });
   }
+  /**
+   * @license lucide-react v0.479.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   */
+  const toKebabCase = (string2) => string2.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
+  const mergeClasses = (...classes) => classes.filter((className, index2, array) => {
+    return Boolean(className) && className.trim() !== "" && array.indexOf(className) === index2;
+  }).join(" ").trim();
+  /**
+   * @license lucide-react v0.479.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   */
+  var defaultAttributes = {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 24,
+    height: 24,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  };
+  /**
+   * @license lucide-react v0.479.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   */
+  const Icon = reactExports.forwardRef(
+    ({
+      color: color2 = "currentColor",
+      size = 24,
+      strokeWidth = 2,
+      absoluteStrokeWidth,
+      className = "",
+      children,
+      iconNode,
+      ...rest
+    }, ref) => {
+      return reactExports.createElement(
+        "svg",
+        {
+          ref,
+          ...defaultAttributes,
+          width: size,
+          height: size,
+          stroke: color2,
+          strokeWidth: absoluteStrokeWidth ? Number(strokeWidth) * 24 / Number(size) : strokeWidth,
+          className: mergeClasses("lucide", className),
+          ...rest
+        },
+        [
+          ...iconNode.map(([tag, attrs]) => reactExports.createElement(tag, attrs)),
+          ...Array.isArray(children) ? children : [children]
+        ]
+      );
+    }
+  );
+  /**
+   * @license lucide-react v0.479.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   */
+  const createLucideIcon = (iconName, iconNode) => {
+    const Component = reactExports.forwardRef(
+      ({ className, ...props }, ref) => reactExports.createElement(Icon, {
+        ref,
+        iconNode,
+        className: mergeClasses(`lucide-${toKebabCase(iconName)}`, className),
+        ...props
+      })
+    );
+    Component.displayName = `${iconName}`;
+    return Component;
+  };
+  /**
+   * @license lucide-react v0.479.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   */
+  const __iconNode = [
+    ["rect", { width: "20", height: "14", x: "2", y: "5", rx: "2", key: "ynyp8z" }],
+    ["line", { x1: "2", x2: "22", y1: "10", y2: "10", key: "1b3vmo" }]
+  ];
+  const CreditCard = createLucideIcon("CreditCard", __iconNode);
   function PaymentPreview({ url }) {
     const handleClick = (e) => {
       e.preventDefault();
@@ -43501,7 +43473,9 @@ For more information, see https://radix-ui.com/primitives/docs/components/${titl
     }, []);
     return { scrollRef, scrollToBottom, isNearBottom };
   }
-  const ChatMessages = reactExports.memo(function ChatMessages2() {
+  const ChatMessages = reactExports.memo(function ChatMessages2({
+    onMessageSend
+  }) {
     const { scrollToBottom, scrollRef, isNearBottom } = useScrollToBottom();
     const { messages } = useMessages();
     const { loadingMessage } = useLoadingMessage();
@@ -43519,7 +43493,7 @@ For more information, see https://radix-ui.com/primitives/docs/components/${titl
       }
     }, [loadingMessage, scrollToBottom]);
     const handleSendMessage = (message) => {
-      console.log("handleSendMessage", message);
+      onMessageSend(message);
     };
     const handleCardSelect = reactExports.useCallback(
       (title) => {
@@ -43555,7 +43529,7 @@ For more information, see https://radix-ui.com/primitives/docs/components/${titl
       }
     );
   });
-  function Chat() {
+  function Chat({ onMessageSend }) {
     const scrollRef = reactExports.useRef(null);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-gray-100 p-0 overflow-scroll", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
       "div",
@@ -43563,7 +43537,7 @@ For more information, see https://radix-ui.com/primitives/docs/components/${titl
         id: "chat-feed",
         ref: scrollRef,
         className: "w-full bg-white rounded-none overflow-scroll flex flex-col relative height-full",
-        children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChatMessages, {})
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChatMessages, { onMessageSend })
       }
     ) }) });
   }
@@ -43574,11 +43548,7 @@ For more information, see https://radix-ui.com/primitives/docs/components/${titl
     stringToNormalize = stringToNormalize.replace(/\\\\n/g, "\\n");
     return stringToNormalize;
   }
-  function PopChat({
-    authToken: authToken2,
-    onClose,
-    theme: theme21
-  }) {
+  function PopChat({ authToken: authToken2, onClose, theme: theme21 }) {
     const { messages, setMessages } = useMessages();
     const { setLoadingMessage } = useLoadingMessage();
     const [isLoading, setIsLoading] = reactExports.useState(false);
@@ -43622,7 +43592,6 @@ For more information, see https://radix-ui.com/primitives/docs/components/${titl
             const { value, done } = await reader.read();
             if (done) break;
             const chunk = decoder.decode(value);
-            console.log("Received chunk:", chunk);
             const lines = chunk.split("\n");
             let messageUpdated = false;
             for (const line of lines) {
@@ -43668,7 +43637,9 @@ For more information, see https://radix-ui.com/primitives/docs/components/${titl
                   }
                 } else if (parsed.type === "tool" && ((_b2 = (_a2 = parsed.tool) == null ? void 0 : _a2.args) == null ? void 0 : _b2.waitingMessage)) {
                   currentWaitingMessage = parsed.tool.args.waitingMessage;
-                  setLoadingMessage(currentWaitingMessage || "Assistant is typing...");
+                  setLoadingMessage(
+                    currentWaitingMessage || "Assistant is typing..."
+                  );
                   messageUpdated = true;
                   requestAnimationFrame(forceScrollToBottom);
                 }
@@ -43689,10 +43660,13 @@ For more information, see https://radix-ui.com/primitives/docs/components/${titl
             setMessages((prev) => {
               const lastMessage = prev[prev.length - 1];
               if (lastMessage.role === "assistant" && lastMessage.content === "...") {
-                return [...prev.slice(0, -1), {
-                  ...lastMessage,
-                  content: assistantMessage
-                }];
+                return [
+                  ...prev.slice(0, -1),
+                  {
+                    ...lastMessage,
+                    content: assistantMessage
+                  }
+                ];
               }
               return prev;
             });
@@ -43804,7 +43778,7 @@ For more information, see https://radix-ui.com/primitives/docs/components/${titl
                 onClick: onClose,
                 className: "p-1 rounded-full hover:bg-muted",
                 "aria-label": "Close chat",
-                children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 20 })
+                children: /* @__PURE__ */ jsxRuntimeExports.jsx(XIcon, { size: 16 })
               }
             )
           ]
@@ -43816,7 +43790,7 @@ For more information, see https://radix-ui.com/primitives/docs/components/${titl
           className: "flex-1 overflow-auto",
           ref: scrollRef,
           style: { maxHeight: "calc(100vh - 130px)" },
-          children: /* @__PURE__ */ jsxRuntimeExports.jsx(Chat, {})
+          children: /* @__PURE__ */ jsxRuntimeExports.jsx(Chat, { onMessageSend: handleSendMessage })
         }
       ),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "p-4 border-t border-border", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
